@@ -1,7 +1,7 @@
 import './pages/index.css';
 import { initialCards } from './cards.js';
-import { createCard, cardRemoval, cardLike } from './card.js';
-import { openModal, closeModal } from './modal.js';
+import { createCard, cardRemoval, cardLike } from './components/card.js';
+import { openModal, closeModal, handleOverlayClick } from './components/modal.js';
 
 function cardImageClick(cardData) {
     const popupImage = document.querySelector('.popup_type_image');
@@ -22,7 +22,14 @@ initialCards.forEach((item) => {
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popupEditProfile = document.querySelector('.popup_type_edit');
+const nameInput = document.querySelector('.popup__input_type_name');
+const jobInput = document.querySelector('.popup__input_type_description');
+const profileName = document.querySelector('.profile__title');
+const profileJob = document.querySelector('.profile__description');
+
 profileEditButton.addEventListener('click', function() {
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
     openModal(popupEditProfile);
 });
 
@@ -36,29 +43,19 @@ popupCloseButtons.forEach((button) => {
 
 const popups = document.querySelectorAll('.popup');
 popups.forEach((popup) => {
-    popup.addEventListener('click', function(evt) {
-        if (evt.target === evt.currentTarget) {
-            closeModal(popup);
-        }
-    });
+    popup.addEventListener('click', handleOverlayClick);
 });
 
 const formEditProfile = document.querySelector('.popup__form[name="edit-profile"]');
-const nameInput = document.querySelector('.profile__title');
-const jobInput = document.querySelector('.profile__description');
 
-function handleFormSubmit(evt, newName, newJob) {  
+function handleProfileFormSubmit(evt) {  
     evt.preventDefault();
-    const name = formEditProfile.querySelector('.popup__input_type_name').value;
-    const job = formEditProfile.querySelector('.popup__input_type_description').value;
-    newName.textContent = name;
-    newJob.textContent = job;
+    profileName.textContent = nameInput.value;
+    profileJob.textContent = jobInput.value;
     closeModal(popupEditProfile);
 }
 
-formEditProfile.addEventListener('submit', function(evt) {
-    handleFormSubmit(evt, nameInput, jobInput);
-});
+formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
 const addButton = document.querySelector('.profile__add-button');
 const popupAddCard = document.querySelector('.popup_type_new-card');
