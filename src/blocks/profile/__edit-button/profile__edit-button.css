@@ -1,7 +1,7 @@
 .profile__edit-button {
   width: 24px;
   height: 24px;
-  background: transparent url('../../../images/edit-icon.svg') center no-repeat;
+  background: transparent url("../../../images/edit-icon.svg") center no-repeat;
   background-size: 10px 10px;
   border: 1px solid #fff;
   grid-area: button;
@@ -37,7 +37,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.5) url('../../../images/avatar-configuration.svg') center/24px no-repeat;
+  background: rgba(0, 0, 0, 0.5) url("../../../images/avatar-configuration.svg")
+    center/24px no-repeat;
   opacity: 0;
   transition: opacity 0.3s;
 }
