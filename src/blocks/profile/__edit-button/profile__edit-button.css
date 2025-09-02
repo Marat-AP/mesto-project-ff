@@ -27,3 +27,21 @@
     background-size: 8px 8px;
   }
 }
+
+.profile__image {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5) url('../../../images/avatar-configuration.svg') center/24px no-repeat;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.profile__image:hover::after {
+  opacity: 1;
+}

@@ -9,6 +9,13 @@
   padding: 34px 36px;
 }
 
+.popup_type_confirm .popup__content {
+  width: 430px;
+  height: 181px;
+  min-height: auto;
+}
+
+
 @media screen and (max-width: 568px) {
   .popup__content {
     width: 100%;
@@ -16,4 +23,14 @@
     margin-top: 40px;
     padding: 30px 20px;
   }
+}
+
+.popup_type_avatar .popup__content {
+  max-width: 400px;
+  min-height: 200px;
+  padding: 0px 20px 20px 20px;
+}
+
+.popup_type_avatar .popup__title {
+  margin-top: 34px;
 }
